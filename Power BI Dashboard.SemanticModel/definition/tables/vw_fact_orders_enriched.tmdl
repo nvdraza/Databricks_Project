@@ -1,0 +1,188 @@
+table vw_fact_orders_enriched
+	lineageTag: 1cc49ec8-cac8-4352-a4a8-851bade6e905
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0424914a-635a-48a7-b85f-8ce2b5a66c0d
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: e8d836d1-5833-47ce-977a-9e4bee8ede0f
+			defaultHierarchy: LocalDateTable_ad6f8561-81d4-4457-a7d8-e60015ac1577.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column product_code
+		dataType: string
+		lineageTag: 593ae616-7e43-44a0-95cb-a1e053fcc8ce
+		summarizeBy: none
+		sourceColumn: product_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_code
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ed21a67-3038-4d84-8a96-80051a3fbcca
+		summarizeBy: sum
+		sourceColumn: customer_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_key
+		dataType: int64
+		formatString: 0
+		lineageTag: c085a610-0845-45b8-9bf7-0f032d22ea64
+		summarizeBy: sum
+		sourceColumn: date_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 545a331f-1499-4f87-b43d-7d14c25ca9f9
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: 3a48368d-320c-41c8-a9e6-98f42a8d584e
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_short_name
+		dataType: string
+		lineageTag: a9ac2bd4-85ad-4789-a77c-bdbdce092cb4
+		summarizeBy: none
+		sourceColumn: month_short_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: string
+		lineageTag: 1bfc8252-ea25-4dfb-8201-21e4f18d3d5a
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_quarter
+		dataType: string
+		lineageTag: e6ad3d5f-dcc9-4501-b350-cc39f8decdf3
+		summarizeBy: none
+		sourceColumn: year_quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer
+		dataType: string
+		lineageTag: 5da83dd9-2b03-4a4f-aca8-87c2ff219a0d
+		summarizeBy: none
+		sourceColumn: customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column market
+		dataType: string
+		lineageTag: 6b2f7664-82cb-47a1-8264-f457c689cabc
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	column platform
+		dataType: string
+		lineageTag: dde8cca9-0d7d-470e-bcd7-4d94cd307e8b
+		summarizeBy: none
+		sourceColumn: platform
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: 3fd0b446-037a-4b48-b708-2959b1e439e0
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column division
+		dataType: string
+		lineageTag: cbb0d03b-d9c5-4079-aca7-3525b65a97e1
+		summarizeBy: none
+		sourceColumn: division
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: a2957418-a533-4f07-969e-b7b0c038b282
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column product
+		dataType: string
+		lineageTag: 19bcd3a1-ce38-443d-8630-821e6c379037
+		summarizeBy: none
+		sourceColumn: product
+
+		annotation SummarizationSetBy = Automatic
+
+	column variant
+		dataType: string
+		lineageTag: 1a10641e-64d5-4350-ab82-ff3322760479
+		summarizeBy: none
+		sourceColumn: variant
+
+		annotation SummarizationSetBy = Automatic
+
+	column sold_quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a58fec3-5b72-4b47-a6dc-db553acef3af
+		summarizeBy: sum
+		sourceColumn: sold_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column price_inr
+		dataType: int64
+		formatString: 0
+		lineageTag: 08009aa4-f6f8-4aeb-b731-8ba2329bf0fa
+		summarizeBy: sum
+		sourceColumn: price_inr
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_amount_inr
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d1a2c02-b25d-4bd6-92c4-e23da405dfbd
+		summarizeBy: sum
+		sourceColumn: total_amount_inr
+
+		annotation SummarizationSetBy = Automatic
+
+	partition vw_fact_orders_enriched = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-9bc9b30c-918d.cloud.databricks.com", "/sql/1.0/warehouses/b967dbb2b11c15d3", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    fmcg_Database = Source{[Name="fmcg",Kind="Database"]}[Data],
+				    gold_Schema = fmcg_Database{[Name="gold",Kind="Schema"]}[Data],
+				    vw_fact_orders_enriched_View = gold_Schema{[Name="vw_fact_orders_enriched",Kind="View"]}[Data]
+				in
+				    vw_fact_orders_enriched_View
+

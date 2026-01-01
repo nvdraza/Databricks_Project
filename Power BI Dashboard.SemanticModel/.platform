@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Power BI Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "8e7bd4f4-dfd4-42bd-8448-124fbc4c1419"
+  }
+}
