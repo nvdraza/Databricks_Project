@@ -5,10 +5,6 @@ table _Measures
 		formatString: 0
 		lineageTag: befa0c3e-cc9b-476e-92f6-5a880ca35265
 
-	measure total_Sales = SUM(vw_fact_orders_enriched[total_amount_inr])
-		formatString: 0.00
-		lineageTag: d9b3a8f1-4c2b-4d6a-9e77-1a2b3c4d5e6f
-
 	partition _Measures = m
 		mode: import
 		source =

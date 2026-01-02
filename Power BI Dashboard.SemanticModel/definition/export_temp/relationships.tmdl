@@ -1,0 +1,5 @@
+relationship e8d836d1-5833-47ce-977a-9e4bee8ede0f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: vw_fact_orders_enriched.date
+	toColumn: LocalDateTable_ad6f8561-81d4-4457-a7d8-e60015ac1577.Date
+

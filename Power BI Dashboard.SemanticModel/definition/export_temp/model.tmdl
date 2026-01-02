@@ -1,0 +1,21 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["vw_fact_orders_enriched","_Measures"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table vw_fact_orders_enriched
+ref table DateTableTemplate_5df6cecd-930e-4f81-a839-bab35200722c
+ref table LocalDateTable_ad6f8561-81d4-4457-a7d8-e60015ac1577
+ref table _Measures
+
+ref cultureInfo en-US
+
